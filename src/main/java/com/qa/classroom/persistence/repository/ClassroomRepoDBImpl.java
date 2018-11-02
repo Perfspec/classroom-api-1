@@ -63,12 +63,21 @@ public class ClassroomRepoDBImpl implements ClassroomRepo {
 	}
 	
 	@Transactional(REQUIRED)
-	public String updateClassroom(String classroom, Long id) {
+	public String updateTrainer(String classroom, Long id) {
 		Classroom classroomObj = util.getObjectfromJSON(classroom, Classroom.class);
 		Classroom oldClassroom = em.find(Classroom.class, id);
 		
 		oldClassroom.setTrainerName(classroomObj.getTrainerName());
-		oldClassroom.setTrainees(classroomObj.getTrainees());
+		
+		return "{\"message\": \"classroom sucessfully updated\"}";
+	}
+	
+	@Transactional(REQUIRED)
+	public String updateTrainee(String trainee, Long id) {
+		Trainee traineeObj = util.getObjectfromJSON(trainee, Trainee.class);
+		Trainee oldTrainee = em.find(Trainee.class, id);
+		
+		oldTrainee.setTraineeName(traineeObj.getTraineeName());
 		
 		return "{\"message\": \"classroom sucessfully updated\"}";
 	}

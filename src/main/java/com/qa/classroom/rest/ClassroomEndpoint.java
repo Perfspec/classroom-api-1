@@ -45,11 +45,18 @@ public class ClassroomEndpoint {
 		return service.deleteClassroom(id);
 	}
 	
-	@Path("/updateClassroom/{id}")
+	@Path("/updateTrainer/{id}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateClassroom(String classroom, @PathParam("id") Long id) {
-		return service.updateClassroom(classroom, id);
+	public String updateTrainer(String trainer, @PathParam("id") Long id) {
+		return service.updateTrainer(trainer, id);
+	}
+	
+	@Path("/updateTrainee/{id}")
+	@PUT
+	@Produces({ "application/json" })
+	public String updateTrainee(String trainee, @PathParam("id") Long id) {
+		return service.updateTrainee(trainee, id);
 	}
 	
 	@Path("/createTrainee/{id}")

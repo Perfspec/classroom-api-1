@@ -10,7 +10,9 @@ public interface ClassroomRepo {
 	
 	String getClassroom(Long id);
 	
-	String updateClassroom(String classroom, Long id);
+	String updateTrainer(String classroom, Long id);
+	
+	String updateTrainee(String trainee, Long id);
 
 	String createTrainee(String trainee, Long id);
 }

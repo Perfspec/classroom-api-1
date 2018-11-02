@@ -25,8 +25,12 @@ public class ClassroomServiceImpl implements ClassroomService {
 		return repo.getClassroom(id);
 	}
 
-	public String updateClassroom(String classroom, Long id) {
-		return repo.updateClassroom(classroom, id);
+	public String updateTrainer(String trainer, Long id) {
+		return repo.updateTrainer(trainer, id);
+	}
+	
+	public String updateTrainee(String trainee, Long id) {
+		return repo.updateTrainee(trainee, id);
 	}
 	
 	public String createTrainee(String trainee, Long id) {
