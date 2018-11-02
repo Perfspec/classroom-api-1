@@ -15,4 +15,6 @@ public interface ClassroomRepo {
 	String updateTrainee(String trainee, Long id);
 
 	String createTrainee(String trainee, Long id);
+	
+	String moveTrainee(String classroomID, Long traineeID);
 }

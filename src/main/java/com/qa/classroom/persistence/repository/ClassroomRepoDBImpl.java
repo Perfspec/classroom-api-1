@@ -81,6 +81,26 @@ public class ClassroomRepoDBImpl implements ClassroomRepo {
 		
 		return "{\"message\": \"classroom sucessfully updated\"}";
 	}
+	
+	@Transactional(REQUIRED)
+	public String moveTrainee(String classroomID, Long traineeID) {
+		Long id = util.getObjectfromJSON(classroomID, Classroom.class).getClassroomID();
+		Classroom classroom = em.find(Classroom.class, id);
+		Trainee trainee = em.find(Trainee.class, traineeID);
+		
+		Query query = em.createQuery("SELECT c FROM Classroom c");
+		Collection<Classroom> classroomList = (Collection<Classroom>) query.getResultList();
+		
+		for(Classroom c: classroomList) {
+			if(c.getClassroomID() == classroom.getClassroomID()) {
+				c.getTrainees().remove(trainee);
+			}
+		}
+		
+		classroom.getTrainees().add(trainee);
+		
+		return "{\"message\": \"trainee sucessfully moved\"}";
+	}
 
 	public void setManager(EntityManager manager) {
 		this.em = manager;

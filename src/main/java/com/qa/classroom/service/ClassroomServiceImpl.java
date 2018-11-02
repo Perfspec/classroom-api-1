@@ -29,6 +29,10 @@ public class ClassroomServiceImpl implements ClassroomService {
 		return repo.updateTrainer(trainer, id);
 	}
 	
+	public String moveTrainee(String classroomID, Long traineeID) {
+		return repo.moveTrainee(classroomID, traineeID);
+	}
+	
 	public String updateTrainee(String trainee, Long id) {
 		return repo.updateTrainee(trainee, id);
 	}

@@ -59,6 +59,13 @@ public class ClassroomEndpoint {
 		return service.updateTrainee(trainee, id);
 	}
 	
+	@Path("/moveTrainee/{id}")
+	@PUT
+	@Produces({ "application/json" })
+	public String moveTrainee(String classRoomID, @PathParam("id") Long traineeID) {
+		return service.moveTrainee(classRoomID, traineeID);
+	}
+	
 	@Path("/createTrainee/{id}")
 	@POST
 	@Produces({ "application/json" })
