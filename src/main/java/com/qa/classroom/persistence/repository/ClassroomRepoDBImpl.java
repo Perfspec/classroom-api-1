@@ -87,15 +87,9 @@ public class ClassroomRepoDBImpl implements ClassroomRepo {
 		Long id = util.getObjectfromJSON(classroomID, Classroom.class).getClassroomID();
 		Classroom classroom = em.find(Classroom.class, id);
 		Trainee trainee = em.find(Trainee.class, traineeID);
+		Classroom oldClassroom = em.find(Classroom.class, trainee.getClassroomID());
 		
-		Query query = em.createQuery("SELECT c FROM Classroom c");
-		Collection<Classroom> classroomList = (Collection<Classroom>) query.getResultList();
-		
-		for(Classroom c: classroomList) {
-			if(c.getClassroomID() == classroom.getClassroomID()) {
-				c.getTrainees().remove(trainee);
-			}
-		}
+		oldClassroom.getTrainees().remove(trainee);
 		
 		classroom.getTrainees().add(trainee);
 		

@@ -13,6 +13,8 @@ public class Trainee {
 	
 	private String traineeName;
 	
+	private Long classroomID;
+	
 	public Trainee() {
 		
 	}
@@ -33,5 +35,13 @@ public class Trainee {
 	}
 	public void setTraineeName(String traineeName) {
 		this.traineeName = traineeName;
+	}
+
+	public Long getClassroomID() {
+		return classroomID;
+	}
+
+	public void setClassroomID(Long classroomID) {
+		this.classroomID = classroomID;
 	}
 }
