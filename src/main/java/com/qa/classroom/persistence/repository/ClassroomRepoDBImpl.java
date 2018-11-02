@@ -4,17 +4,16 @@ import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import com.qa.classroom.persistence.domain.Classroom;
+import com.qa.classroom.persistence.domain.Trainee;
 import com.qa.classroom.utils.JSONUtil;
 
 @Transactional(SUPPORTS)
@@ -39,6 +38,15 @@ public class ClassroomRepoDBImpl implements ClassroomRepo {
 		Classroom classroomObj = util.getObjectfromJSON(classroom, Classroom.class);
 		em.persist(classroomObj);
 		return "{\"message\": \"classroom Created\"}";
+	}
+	
+	@Transactional(REQUIRED)
+	public String createTrainee(String trainee, Long id) {
+		Trainee traineeObj = util.getObjectfromJSON(trainee, Trainee.class);
+		Classroom classroom = em.find(Classroom.class, id);
+		em.persist(traineeObj);
+		classroom.getTrainees().add(traineeObj);
+		return "{\"message\": \"trainee Created\"}";
 	}
 	
 	@Transactional(REQUIRED)

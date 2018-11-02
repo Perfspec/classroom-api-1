@@ -20,35 +20,42 @@ public class ClassroomEndpoint {
 	@Path("/getAllClassrooms")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllclassrooms() {
+	public String getAllClassrooms() {
 		return service.getAllClassrooms();
 	}
 	
 	@Path("/getClassroom/{id}")
 	@GET
 	@Produces({ "application/json" })
-	public String findAnclassroom(@PathParam("id") Long id) {
+	public String getClassroom(@PathParam("id") Long id) {
 		return service.getClassroom(id);
 	}
 	
 	@Path("/createClassroom")
 	@POST
 	@Produces({ "application/json" })
-	public String createclassroom(String classroom) {
+	public String createClassroom(String classroom) {
 		return service.createClassroom(classroom);
 	}
 	
 	@Path("/deleteClassroom/{id}")
 	@DELETE
 	@Produces({ "application/json" })
-	public String deleteclassroom(@PathParam("id") Long id) {
+	public String deleteClassroom(@PathParam("id") Long id) {
 		return service.deleteClassroom(id);
 	}
 	
 	@Path("/updateClassroom/{id}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateclassroom(String classroom, @PathParam("id") Long id) {
+	public String updateClassroom(String classroom, @PathParam("id") Long id) {
 		return service.updateClassroom(classroom, id);
+	}
+	
+	@Path("/createTrainee/{id}")
+	@POST
+	@Produces({ "application/json" })
+	public String createTrainee(String trainee, @PathParam("id") Long id) {
+		return service.createTrainee(trainee, id);
 	}
 }

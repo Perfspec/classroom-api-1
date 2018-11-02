@@ -11,4 +11,6 @@ public interface ClassroomService {
 	String getClassroom(Long id);
 	
 	String updateClassroom(String classroom, Long id);
+
+	String createTrainee(String trainee, Long id);
 }
